@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <style>
-  /* 全局基础样式修复 */
   .app {
     padding: 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -13,8 +12,6 @@
     max-width: 800px;
     margin: 0 auto;
   }
-  
-  /* 卡片容器优化 */
   .card {
     background: #ffffff;
     border: 1px solid #e5e7eb;
@@ -23,7 +20,6 @@
     margin-bottom: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
-  
   .section-title {
     font-size: 14px;
     font-weight: 600;
@@ -33,74 +29,68 @@
     border-left: 4px solid #3b82f6;
     padding-left: 8px;
   }
-  
-  /* 步骤样式优化 */
   .step-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
   .step-num {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #eff6ff;
-    color: #1d4ed8;
-    font-size: 12px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #eff6ff; color: #1d4ed8;
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
   }
   .step-text { font-size: 13px; color: #4b5563; line-height: 1.6; }
   .step-text b { font-weight: 600; color: #111827; }
 
-  /* 输入框样式优化 */
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field label { font-size: 12px; font-weight: 500; color: #6b7280; }
   .field input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 8px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
+    width: 100%; box-sizing: border-box;
+    padding: 8px 12px; border: 1px solid #d1d5db;
+    border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.2s;
   }
   .field input:focus { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.1); }
   .field .hint { font-size: 11px; color: #9ca3af; }
 
-  /* 结果展示区优化 */
   .result-grid, .result-grid2 { display: grid; gap: 12px; margin-top: 4px; }
   .result-grid2 { grid-template-columns: repeat(2, 1fr); }
-  .result-grid { grid-template-columns: repeat(3, 1fr); }
-  
+  .result-grid  { grid-template-columns: repeat(3, 1fr); }
+
   .metric {
-    background: #f3f4f6;
-    border-radius: 8px;
-    padding: 14px;
-    text-align: center;
-    border: 1px solid transparent;
+    background: #f3f4f6; border-radius: 8px;
+    padding: 14px; text-align: center; border: 1px solid transparent;
   }
   .metric-val { font-size: 18px; font-weight: 700; color: #111827; }
   .metric-lbl { font-size: 11px; color: #6b7280; margin-top: 4px; }
-  
-  /* 重点面积结果 */
   .metric.accent { background: #eff6ff; border: 1px solid #bfdbfe; }
   .metric.accent .metric-val { color: #2563eb; font-size: 24px; }
   .metric.accent .metric-lbl { color: #1d4ed8; font-weight: 600; }
 
-  /* 错误提示 */
-  .err { font-size: 12px; color: #dc2626; background: #fef2f2; border: 1px solid #fee2e2; border-radius: 6px; padding: 10px; margin-top: 10px; display: none; }
-  
+  .err {
+    font-size: 12px; color: #dc2626; background: #fef2f2;
+    border: 1px solid #fee2e2; border-radius: 6px;
+    padding: 10px; margin-top: 10px; display: none;
+  }
   .divider { border: none; border-top: 1px solid #f3f4f6; margin: 16px 0; }
-  .formula-row { font-size: 11px; color: #9ca3af; margin-top: 15px; line-height: 1.8; text-align: center; background: #fafafa; padding: 10px; border-radius: 6px; }
-  .note-box { font-size: 12px; color: #6b7280; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; line-height: 1.6; }
+  .formula-row {
+    font-size: 11px; color: #9ca3af; margin-top: 15px;
+    line-height: 1.9; text-align: center;
+    background: #fafafa; padding: 10px; border-radius: 6px;
+  }
+  .note-box {
+    font-size: 12px; color: #6b7280; background: #fffbeb;
+    border: 1px solid #fde68a; border-radius: 8px;
+    padding: 10px 14px; margin-bottom: 16px; line-height: 1.6;
+  }
+  .fix-badge {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    color: #065f46; background: #d1fae5; border: 1px solid #6ee7b7;
+    border-radius: 4px; padding: 2px 7px; margin-left: 8px; vertical-align: middle;
+  }
 </style>
 </head>
 <body>
-
 <div class="app">
+
 <div class="card">
   <div class="section-title">测量教程</div>
   <div class="step-row">
@@ -154,7 +144,7 @@
 <div class="card">
   <div class="section-title">输入参数</div>
   <div class="note-box">
-    填入相机架设高度 H，斜距将自动换算。若从地面测量，H 填 0 即可。
+    填入相机架设高度 H，斜距将自动换算为水平距离。若从地面测量，H 填 0 即可。
   </div>
 
   <div class="field-row">
@@ -173,6 +163,7 @@
     <div class="field">
       <label>φ_B — 左侧方位角 (°)</label>
       <input type="number" id="phiB" placeholder="320.5" oninput="calc()">
+      <span class="hint">正北 0°，顺时针至 360°</span>
     </div>
   </div>
   <div class="field-row">
@@ -183,31 +174,35 @@
     <div class="field">
       <label>φ_C — 右侧方位角 (°)</label>
       <input type="number" id="phiC" placeholder="42.8" oninput="calc()">
+      <span class="hint">正北 0°，顺时针至 360°</span>
     </div>
   </div>
 
   <div id="err" class="err"></div>
   <hr class="divider">
 
-  <div class="section-title">计算结果</div>
+  <div class="section-title">
+    计算结果
+  </div>
+
   <div class="result-grid2" style="margin-bottom:12px;">
     <div class="metric">
       <div class="metric-val" id="out-hb">—</div>
-      <div class="metric-lbl">B 点水平距离</div>
+      <div class="metric-lbl">B 点水平距离 (m)</div>
     </div>
     <div class="metric">
       <div class="metric-val" id="out-hc">—</div>
-      <div class="metric-lbl">C 点水平距离</div>
+      <div class="metric-lbl">C 点水平距离 (m)</div>
     </div>
   </div>
   <div class="result-grid">
     <div class="metric">
       <div class="metric-val" id="out-w">—</div>
-      <div class="metric-lbl">W₂ 远端宽度</div>
+      <div class="metric-lbl">W₂ 远端宽度 (m)</div>
     </div>
     <div class="metric">
       <div class="metric-val" id="out-l">—</div>
-      <div class="metric-lbl">L 纵深</div>
+      <div class="metric-lbl">L 垂直纵深 (m)</div>
     </div>
     <div class="metric accent">
       <div class="metric-val" id="out-s">—</div>
@@ -215,10 +210,22 @@
     </div>
   </div>
   <div style="margin-top:8px;text-align:right;">
-    <span id="out-s-m2" style="font-size:12px;color: #9ca3af;font-family:monospace;"></span>
+    <span id="out-s-m2" style="font-size:12px;color:#9ca3af;font-family:monospace;"></span>
   </div>
 
+  <div class="formula-row">
+    水平距离 d = √(r²−H²)
+    &nbsp;·&nbsp;
+    坐标：x = d·sin(φ)，y = d·cos(φ)
+    &nbsp;·&nbsp;
+    W₂ = √(d_B²＋d_C²−2·d_B·d_C·cosΔφ)
+    &nbsp;·&nbsp;
+    L = |x_B·y_C − x_C·y_B| / W₂
+    &nbsp;·&nbsp;
+    S = W₂ × L
+  </div>
 </div>
+
 </div>
 
 <script>
@@ -231,30 +238,51 @@ function calc() {
   const err  = document.getElementById('err');
 
   if ([rB, phiB, rC, phiC].some(v => isNaN(v))) {
-    reset(); err.style.display='none'; return;
+    reset(); err.style.display = 'none'; return;
   }
   if (rB <= 0 || rC <= 0) {
-    err.textContent='距离必须大于 0'; err.style.display='block'; reset(); return;
+    err.textContent = '距离必须大于 0'; err.style.display = 'block'; reset(); return;
   }
   if (H > 0 && (H >= rB || H >= rC)) {
-    err.textContent='相机高度 H 不能大于或等于斜距'; err.style.display='block'; reset(); return;
+    err.textContent = '相机高度 H 不能大于或等于斜距'; err.style.display = 'block'; reset(); return;
   }
 
-  const dB = H > 0 ? Math.sqrt(rB*rB - H*H) : rB;
-  const dC = H > 0 ? Math.sqrt(rC*rC - H*H) : rC;
+  // 斜距换算水平距离
+  const dB = H > 0 ? Math.sqrt(rB * rB - H * H) : rB;
+  const dC = H > 0 ? Math.sqrt(rC * rC - H * H) : rC;
 
+  // 方位角夹角
   let dPhi = Math.abs(phiC - phiB);
   if (dPhi > 180) dPhi = 360 - dPhi;
 
   if (dPhi < 0.5) {
-    err.textContent='角度过于接近'; err.style.display='block'; reset(); return;
+    err.textContent = '两个方位角过于接近，请检查读数'; err.style.display = 'block'; reset(); return;
   }
-  err.style.display = 'none';
+  if (dPhi > 170) {
+    err.textContent = '角度差超过 170°，请检查读数是否正确'; err.style.display = 'block';
+  } else {
+    err.style.display = 'none';
+  }
 
+  // B、C 平面坐标（站位为原点，正北为 y 轴正方向）
+  const phiBRad = phiB * Math.PI / 180;
+  const phiCRad = phiC * Math.PI / 180;
+  const xB = dB * Math.sin(phiBRad);
+  const yB = dB * Math.cos(phiBRad);
+  const xC = dC * Math.sin(phiCRad);
+  const yC = dC * Math.cos(phiCRad);
+
+  // W₂：余弦定理
   const dPhiRad = dPhi * Math.PI / 180;
-  const W2 = Math.sqrt(dB*dB + dC*dC - 2*dB*dC*Math.cos(dPhiRad));
-  const L  = (dB + dC) / 2;
-  const S  = W2 * L;
+  const W2 = Math.sqrt(dB * dB + dC * dC - 2 * dB * dC * Math.cos(dPhiRad));
+
+  // L：站位到 BC 连线的垂直距离（叉积法）
+  // 三角形面积 = 0.5 × |叉积|，故 L = |叉积| / W₂
+  const cross = Math.abs(xB * yC - xC * yB);
+  const L = cross / W2;
+
+  // 面积
+  const S  = W2 * L;  // 等价于 cross（三角形面积×2 / 2 × ... 实际 S = cross）
   const ha = S / 10000;
 
   document.getElementById('out-hb').textContent = dB.toFixed(2) + ' m';
@@ -266,7 +294,7 @@ function calc() {
 }
 
 function reset() {
-  ['out-hb','out-hc','out-w','out-l','out-s'].forEach(id => {
+  ['out-hb', 'out-hc', 'out-w', 'out-l', 'out-s'].forEach(id => {
     document.getElementById(id).textContent = '—';
   });
   document.getElementById('out-s-m2').textContent = '';
