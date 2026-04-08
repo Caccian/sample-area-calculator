@@ -4,7 +4,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![NCU](https://img.shields.io/badge/南昌大学-鸟类学实验室-005caf?style=flat-square)
 
-为**南昌大学生命科学学院鸟类学实验室**开展的“**鄱阳湖越冬候鸟致害项目**”开发。用于野外实地调查时快速计算监测样方面积。
+为**南昌大学生命科学学院鸟类学实验室**的“**鄱阳湖越冬候鸟致害项目**”开发，用于野外实地调查时快速计算监测样方面积。
 
 ## 使用流程
 
